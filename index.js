@@ -7,10 +7,10 @@ const fs = require('fs');
 const Trade = require('./Models/TradeModel');
 const dotenv = require('dotenv');
 dotenv.config();
-
 const app = express();
 const upload = multer({ dest: 'uploads/' });
 
+app.use(express.json());
 const connectToDatabase = async () => {
     try {
         await mongoose.connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.5ddn9tx.mongodb.net/crypto_trades?retryWrites=true&w=majority&appName=Cluster0`);
